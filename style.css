@@ -1,7 +1,18 @@
+
+body {
+    width: 960px;
+    margin: 0 auto;
+}
+
 #clock {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    border: 1px solid lightgray;
 }
 
 #clock img {
+
 }
 
 #hour {
