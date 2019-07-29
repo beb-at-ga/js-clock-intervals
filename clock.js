@@ -3,6 +3,7 @@
 let sec = 1000; 
 let min = sec * 60;
 let hour = min * 60;
+// let now = new Date();
 
 let secInterval, minInterval, hourInterval;
 

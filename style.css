@@ -5,21 +5,47 @@ body {
 }
 
 #clock {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    border: 1px solid lightgray;
+    width: 50%;
+    margin: auto;
+    height: auto;
+    position: relative;
+    z-index: -1;
 }
 
 #clock img {
-
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 20;
 }
 
 #hour {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 30;
 }
 
 #minute {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 40;
 }
 
 #second {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    z-index: 50;
 }
+
+
