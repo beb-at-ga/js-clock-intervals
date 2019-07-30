@@ -4,33 +4,12 @@ body {
 }
 
 #clock {
+  position: relative;
   width: 50%;
   margin: auto;
-  height: auto;
-  position: relative;
-  z-index: -1;
 }
 
 #clock img {
   position: absolute;
-  left: 0;
   top: 50%;
-  width: 100%;
-  text-align: center;
-  z-index: 20;
-}
-
-#hour-hand {
-  transform: rotate(0deg);
-  z-index: 30;
-}
-
-#minute-hand {
-  transform: rotate(0deg);
-  z-index: 40;
-}
-
-#second-hand {
-  z-index: 50;
-  transform: rotate(0deg);
 }

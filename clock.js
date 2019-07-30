@@ -1,59 +1,45 @@
-// set 3 intervals? hh, mm, ss. set approp milliseconds for hand:
-let sec = 1000;
-let min = sec * 60;
-let hour = min * 60;
-let now = new Date();
-console.log(sec, min, hour);
-
-let secInterval, minInterval, hourInterval;
-
 document.addEventListener("DOMContentLoaded", function() {
-  // init the page
-  secInterval = setInterval(secMgr, sec);
-  minInterval = setInterval(minMgr, min);
-  // hourInterval = setInterval(hourMgr, hour);
+  interval = setInterval(intervalMgr, 1000);
 });
 
-let minMgr = function() {
+let intervalMgr = function() {
   let now = new Date();
-  let minDegree = minRotation(now.getMinutes());
-  updateHand("minute-hand", minDegree);
+  updateHand("hour-hand", now);
+  updateHand("minute-hand", now);
+  updateHand("second-hand", now);
 };
 
-let minRotation = function(curMin) {
-  if (curMin === 60) {
-    return 0;
-  } else {
-    return (curMin / 60) * 60;
-  }
-};
-
-let secMgr = function() {
-  let now = new Date();
-  let secDegree = secondRotation(now.getSeconds()); // returns (59 / 60) * 360
-  updateHand("second-hand", secDegree);
-};
-
-let secondRotation = function(curSec) {
-  // (curSec === 0) ?  0 : (curSec / 60) * 360;
-  if (curSec === 0) {
-    return 0;
-  } else {
-    return (curSec / 60) * 360;
-  }
-};
-
-let updateHand = function(hand, degree) {
+let updateHand = function(hand, time) {
+  let degree = getDegree(hand, time);
   document.getElementById(`${hand}`).style.transform = `rotate(${degree}deg)`;
 };
 
-// let minMgr = function() {
-
-// };
-
-// let hourMgr = function() {
-
-// hourRotation(12); // returns 0
-// hourRotation(5); // returns (5 / 12) * 360
-
-// };
+let getDegree = function(hand, time) {
+  switch (hand) {
+    case 'hour-hand':
+      // Make fractional hr. so hand moves in smaller increments.
+      let fHr = time.getMinutes() / 60 + time.getHours();
+      if (fHr === 12 || fHr == 0) {
+        return 0;
+      } else {
+        return (fHr / 12) * 360;
+      }
+      break;
+    case 'minute-hand':
+      if (time.getMinutes() === 60) {
+        return 0;
+      } else {
+        return (time.getMinutes() / 60) * 360;
+      }
+      break;
+    case 'second-hand':
+      if (time.getSeconds() === 0) {
+        return 0;
+      } else {
+        return (time.getSeconds() / 60) * 360;
+      }
+      break;
+    default:
+      break;
+  }
+};
